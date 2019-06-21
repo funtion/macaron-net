@@ -54,6 +54,7 @@ class IndexedDataset(torch.utils.data.Dataset):
 
     def __init__(self, path, fix_lua_indexing=False, read_data=True):
         super().__init__()
+        print('IndexedDataset.__init__', path)
         self.fix_lua_indexing = fix_lua_indexing
         self.read_index(path)
         self.data_file = None
@@ -61,6 +62,7 @@ class IndexedDataset(torch.utils.data.Dataset):
             self.read_data(path)
 
     def read_index(self, path):
+        print('reading index', path)
         with open(index_file_path(path), 'rb') as f:
             magic = f.read(8)
             assert magic == b'TNTIDX\x00\x00'
