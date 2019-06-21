@@ -124,6 +124,7 @@ def main(args):
 
         input_file = '{}{}'.format(input_prefix, ('.' + lang) if lang is not None else '')
         offsets = Tokenizer.find_offsets(input_file, num_workers)
+        print("offsets", offsets)
         pool = None
         if num_workers > 1:
             pool = Pool(processes=num_workers-1)
