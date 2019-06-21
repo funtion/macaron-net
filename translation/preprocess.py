@@ -233,6 +233,7 @@ def binarize(args, filename, dict, output_prefix, lang, offset, end):
         ds.add_item(tensor)
 
     res = Tokenizer.binarize(filename, dict, consumer, offset=offset, end=end)
+    print(res)
     ds.finalize(dataset_dest_file(args, output_prefix, lang, 'idx'))
     return res
 
