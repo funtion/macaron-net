@@ -236,10 +236,14 @@ def binarize(args, filename, dict, output_prefix, lang, offset, end):
     res = Tokenizer.binarize(filename, dict, consumer, offset=offset, end=end)
     # {'nseq': nseq, 'nunk': sum(replaced.values()), 'ntok': ntok, 'replaced': replaced}
     to_print=['nseq', 'nunk', 'ntok']
-
+    debug_data={}
     for k, v in res.items:
         if k in to_print:
-            print(k, v)
+            debug_data[k]=v
+    debug_data['offset'] = offset
+    debug_data['end'] = end
+
+    print(debug_data)
     
     ds.finalize(dataset_dest_file(args, output_prefix, lang, 'idx'))
     return res
